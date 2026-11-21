@@ -4,6 +4,9 @@ import os
 from pathlib import Path
 from datetime import timedelta
 
+from botocore.config import Config as BotoConfig
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -63,7 +66,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates"),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,6 +142,27 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+USE_S3 = json.loads(os.environ.get("USE_S3", "false").lower())
+if USE_S3:
+    AWS_S3_VERIFY = False
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
+    AWS_S3_ENDPOINT_URL = os.environ.get("AWS_S3_ENDPOINT_URL", "")
+    AWS_S3_ADDRESSING_STYLE = os.environ.get("AWS_S3_ADDRESSING_STYLE", "path")
+    AWS_S3_FILE_OVERWRITE = (
+        os.environ.get("AWS_S3_FILE_OVERWRITE", "true").lower() == "true"
+    )
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    AWS_S3_CLIENT_CONFIG = BotoConfig(
+        s3={"addressing_style": AWS_S3_ADDRESSING_STYLE},
+        signature_version="s3v4",
+        connect_timeout=10,
+        read_timeout=30,
+        retries={"max_attempts": 3},
+        max_pool_connections=10,
+    )
 
 try:
     from config.local_settings import *
