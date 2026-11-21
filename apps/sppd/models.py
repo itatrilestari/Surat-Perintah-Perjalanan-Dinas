@@ -19,8 +19,6 @@ class ActiveRole(models.Model):
 
 class Issuer(TimeStampedUUIDModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="issuer_user", blank=True, null=True)
-    delegation = models.ForeignKey(User, on_delete=models.CASCADE, related_name="issuer_delegation", blank=True, null=True) # user yang didelegasikan
-    secretary = models.ForeignKey(User, on_delete=models.CASCADE, related_name="issuer_secretary", blank=True, null=True) # user yang menjadi sekretaris
 
 class Province(TimeStampedUUIDModel):
     code = models.CharField(max_length=255, null=True, blank=True)
@@ -259,12 +257,9 @@ class Approver(TimeStampedUUIDModel):
     role = models.CharField(max_length=255, blank=True, null=True, choices=ROLE)
     type = models.CharField(max_length=255, blank=True, null=True, choices=TYPE)
     action = models.CharField(max_length=255, blank=True, null=True, choices=ACTION)
-    secretary = models.ForeignKey(User, on_delete=models.CASCADE, related_name="approver_secretary", blank=True, null=True) # user yang menjadi sekretaris
-    delegation = models.ForeignKey(User, on_delete=models.CASCADE, related_name="approver_delegation", blank=True, null=True) # user yang didelegasikan
     sequence = models.IntegerField(null=True, blank=True)
     document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name="approver_document", blank=True, null=True)
     flag = models.CharField(max_length=255, blank=True, null=True)
-    is_inserted = models.BooleanField(default=False)
 
 class SPJ(TimeStampedUUIDModel):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name="spj", blank=True, null=True)
