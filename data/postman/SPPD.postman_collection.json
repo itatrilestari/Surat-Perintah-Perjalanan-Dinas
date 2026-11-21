@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "4c227e45-492f-4055-b1eb-959a53a929a4",
+		"name": "SPPD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32508102",
+		"_collection_link": "https://itatrilestaris-team.postman.co/workspace/local~3f8c3c7a-92fc-41d8-b6d1-6409a5bc3e9d/collection/32508102-4c227e45-492f-4055-b1eb-959a53a929a4?action=share&source=collection_link&creator=32508102"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"tino\",\n    \"email\": \"tino@gmail.com\",\n    \"password\": \"tino12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}register/",
+							"host": [
+								"{{base_url}}register"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"0001\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}login/",
+							"host": [
+								"{{base_url}}login"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ita\",\n    \"email\": \"ita@gmail.com\",\n    \"password\": \"ita12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}profile/me/",
+							"host": [
+								"{{base_url}}profile"
+							],
+							"path": [
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Master Data",
+			"item": [
+				{
+					"name": "Travel Purpose",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}sppd/master-data/travel-purpose/",
+							"host": [
+								"{{base_url}}sppd"
+							],
+							"path": [
+								"master-data",
+								"travel-purpose",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transportation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}sppd/master-data/transportation/",
+							"host": [
+								"{{base_url}}sppd"
+							],
+							"path": [
+								"master-data",
+								"transportation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cost Category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}sppd/master-data/cost-category/",
+							"host": [
+								"{{base_url}}sppd"
+							],
+							"path": [
+								"master-data",
+								"cost-category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Budget Account",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}sppd/master-data/budget-account/",
+							"host": [
+								"{{base_url}}sppd"
+							],
+							"path": [
+								"master-data",
+								"budget-account",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Destination",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}sppd/master-data/destination/",
+							"host": [
+								"{{base_url}}sppd"
+							],
+							"path": [
+								"master-data",
+								"destination",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Active Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\": \"operator\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}activate-role/",
+							"host": [
+								"{{base_url}}activate-role"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
