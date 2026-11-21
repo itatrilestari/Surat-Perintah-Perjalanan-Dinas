@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kop Surat</title>
+
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            font-size: 12px;
+            color: #000;
+            margin: 40px;
+        }
+
+        .kop-surat {
+            display: flex;
+            align-items: center;
+            border-bottom: 5px double black;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .body-container {
+            text-align: justify;
+        }
+
+        .logo {
+            width: 150px;
+            height: 100px;
+            object-fit: contain;
+            margin-right: 20px;
+        }
+
+        .identitas {
+            flex: 1;
+            text-align: center;
+            padding-right: 100px;
+        }
+
+        .identitas h2 {
+            font-family: "Times New Roman", serif;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+            margin: 0 0 1px;
+            line-height: 1.1;
+        }
+
+        .identitas p {
+            font-size: 18px;
+            margin: 3px 0 0;
+            line-height: 1.1;
+        }
+
+        .judul {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .judul h3 {
+            display: inline-block;
+            font-family: "Times New Roman", serif;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            letter-spacing: 1px;
+            margin: 0 0 3px;
+        }
+
+        .judul p {
+            font-family: "Times New Roman", serif;
+            font-size: 18px;
+            margin: 3px 0 0;
+            line-height: 1.1;
+        }
+
+        @media print {
+            body {
+                margin: 2cm;
+            }
+        }
+
+        .dasar-container {
+            display: flex;
+            font-family: "Times New Roman", serif;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-top: 20px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .dasar-label {
+            width: 110px;
+            flex-shrink: 0;
+        }
+
+        .dasar-colon {
+            width: 14px;
+            flex-shrink: 0;
+        }
+
+        .dasar-content {
+            flex: 1;
+        }
+
+        .dasar-content ol {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .memberi-tugas {
+            margin-top: 20px;
+            text-align: center;
+            font-family: "Times New Roman", serif;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .kepada-container {
+            font-family: "Times New Roman", serif;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-top: 20px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .kepada-row {
+            display: flex;
+        }
+
+        .kepada-label {
+            width: 110px;
+            flex-shrink: 0;
+        }
+
+        .kepada-colon {
+            width: 14px;
+            flex-shrink: 0;
+        }
+
+        .nama-container {
+            display: flex;
+            margin-left: 16px;
+            line-height: 1.5;
+        }
+
+        .nama-label {
+            width: 94px;
+            flex-shrink: 0;
+        }
+
+        .nama-colon {
+            width: 14px;
+            flex-shrink: 0;
+        }
+
+        .nama-content {
+            flex: 1;
+        }
+
+        .nama-content-bold {
+            font-weight: bold;
+        }
+
+        .nama-content-light {
+            font-weight: lighter;
+        }
+
+        .document-footer {
+            width: 100%;
+            font-family: "Times New Roman", serif;
+            font-size: 15px;
+            color: #222;
+            position: relative;
+            min-height: 270px;
+        }
+
+        .signature-section {
+            width: 280px;
+            margin-left: auto;
+            margin-right: 0;
+            line-height: 1.5;
+        }
+
+        .signature-location {
+            margin-bottom: 5px;
+        }
+
+        .signature-title {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .qr-verification {
+            display: flex;
+            align-items: center;
+            border: 1px solid #d0d0d0;
+            border-radius: 5px;
+            padding: 8px;
+            height: 46px;
+            box-sizing: border-box;
+            margin: 8px 0;
+            font-family: Arial, sans-serif;
+            font-size: 9px;
+            color: #555;
+        }
+
+        .qr-box {
+            width: 46px;
+            height: 46px;
+            border: 1px dashed #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+            color: #777;
+            box-sizing: border-box;
+        }
+
+        .verification-text {
+            line-height: 1.5;
+        }
+
+        .signer-name {
+            margin-top: 8px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .signer-nip {
+            margin-top: 1px;
+        }
+
+        .copy-section {
+            left: 0;
+            top: 205px;
+            line-height: 1.4;
+            margin-left: 0px;
+            width: 100%;
+            font-family: "Times New Roman", serif;
+            font-size: 14px;
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="kop-surat">
+        <img src="data:image/png;base64,{{ logo_base64 }}" class="logo" alt="Logo">
+        <div class="identitas">
+            <h2>KEMENTERIAN REPUBLIK INDONESIA</h2>
+            <h2>SEKRETARIAT JENDERAL - BIRO UMUM</h2>
+            <p>Jalan Medan Merdeka No.1, Jakarta Pusat 10110 - Telepon (021) 000-0000</p>
+        </div>
+    </div>
+
+    <div class="body-container">
+
+        <div class="judul">
+            <h3>SURAT TUGAS</h3>
+            <p class="nomor-surat">Nomor: {{ doc.assignment_basis }}</p>
+        </div>
+    
+        <div class="dasar-container">
+            <div class="dasar-label">Dasar</div>
+            <div class="dasar-colon">:</div>
+            <div class="dasar-content">
+                <ol>
+                    <li>Daftar Isian Pelaksanaan Anggaran (DIPA) Sekretariat Jenderal Tahun Anggaran 2026;</li>
+                    <li>Rencana kegiatan {{ doc.travel_purpose.name }} di {{ doc.destination_cities }}.</li>
+                </ol>
+            </div>
+        </div>
+    
+        <div class="memberi-tugas">MEMBERI TUGAS</div>
+    
+        <div class="kepada-container">
+            <div class="kepada-row">
+                <div class="kepada-label">Kepada</div>
+                <div class="kepada-colon">:</div>
+            </div>
+    
+            <div class="nama-container">
+                <div class="nama-label">Nama</div>
+                <div class="nama-colon">:</div>
+                <div class="nama-content-bold">
+                    <strong>{{ doc.employee.profile_set.first.name }}</strong>
+                </div>
+            </div>
+    
+            <div class="nama-container">
+                <div class="nama-label">NIP</div>
+                <div class="nama-colon">:</div>
+                <div class="nama-content-light">
+                    <strong>{{ doc.employee.username }}</strong>
+                </div>
+            </div>
+    
+            <div class="nama-container">
+                <div class="nama-label">Pangkat/Gol.</div>
+                <div class="nama-colon">:</div>
+                <div class="nama-content-light">
+                     -
+                </div>
+            </div>
+    
+            <div class="nama-container">
+                <div class="nama-label">Jabatan</div>
+                <div class="nama-colon">:</div>
+                <div class="nama-content-light">
+                     -
+                </div>
+            </div>
+        </div>
+    
+        <div class="dasar-container">
+            <div class="dasar-label">Untuk</div>
+            <div class="dasar-colon">:</div>
+            <div class="dasar-content">
+                <ol>
+                    <li>Melaksanakan {{ doc.travel_purpose.name }} di {{ doc.destination_cities }} selama {{ doc.duration_days }}, pada tanggal {{ doc.departure_date|date:"d M Y" }} s.d. {{ doc.return_date|date:"d M Y" }};</li>
+                    <li>Biaya perjalanan dinas dibebankan pada DIPA Sekretariat Jenderal Tahun Anggaran 2026, akun {{ doc.budget_account.code }} {{ doc.budget_account.name }};</li>
+                    <li>Menyampaikan laporan hasil pelaksanaan tugas paling lambat 5 (lima) hari kerja setelah kembali;</li>
+                    <li>Melaksanakan tugas ini dengan penuh tanggung jawab.</li>
+                </ol>
+            </div>
+        </div>
+    
+        <div class="document-footer">
+            <div class="signature-section">
+                <div class="signature-location">
+                    <br>Ditetapkan di Jakarta<br>
+                    pada tanggal 01 Agu 2026
+                </div>
+                <div class="signature-title">Kuasa Pengguna Anggaran,</div>
+    
+                <div class="qr-verification">
+                    <div class="qr-box">QR</div>
+                    <div class="verification-text">
+                        Ditandatangani secara elektronik<br>
+                        Kode verifikasi: SPPD-0041-7DZ
+                    </div>
+                </div>
+    
+                <div class="signer-name">{{ doc.issuer.user.profile_set.first.name }}</div>
+                <div class="signer-nip">NIP {{doc.issuer.user.username }}</div>
+            </div>
+        </div>
+    
+        <div class="copy-section">
+            <div class="copy-title">Tembusan:</div>
+            <ol>
+                {% for ppk in ppk_list %}
+                <li>{{ ppk.profile_set.first.name }};</li>
+                {% endfor %}
+                <li>{{ kpa_name }};</li>
+                <li>{{ doc.name }}</li>
+            </ol>
+        </div>
+    </div>
+
+</body>
+</html>
