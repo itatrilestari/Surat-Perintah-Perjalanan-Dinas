@@ -17,8 +17,8 @@ Ikuti langkah-langkah berikut untuk menjalankan project di lingkungan lokal.
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/itatrilestari/Portal-Kinerja.git
-cd Base-Code-Django
+git clone https://github.com/itatrilestari/Surat-Perintah-Perjalanan-Dinas.git
+cd Surat-Perintah-Perjalanan-Dinas
 ```
 
 ### 2. Install Dependencies
@@ -119,4 +119,4 @@ Untuk mencoba dan menguji endpoint aplikasi, silakan unduh Postman Collection me
 
 ## License
 
-Repository ini dapat digunakan sebagai template dasar untuk pengembangan project backend berbasis Django REST Framework.
+Repository ini dapat digunakan sebagai referensi.
