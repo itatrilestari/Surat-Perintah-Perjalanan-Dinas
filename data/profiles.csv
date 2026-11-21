@@ -1,0 +1,6 @@
+﻿username,password,name,nik,phone,email,gender,working_unit_code
+0001,123456,Faisal Ali,0001,81234567801,user1@example.com,L,01000
+0002,123456,Danu Ibrahim,0002,81234567802,user2@example.com,P,02000
+0003,123456,Fajar,0003,81234567803,user3@example.com,L,03000
+0004,123456,Gilang Samudra,0004,81234567804,user4@example.com,P,04000
+0005,123456,Muhammad Satria ,0005,81234567805,user5@example.com,L,05000

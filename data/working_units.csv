@@ -1,0 +1,8 @@
+﻿code,name,level,parent_code
+01000,Organisasi,1,
+02000,Sekretariat,2,01000
+03000,Biro SDM,3,02000
+04000,Biro Keuangan,3,03000
+05000,Direktorat IT,3,04000
+06000,Divisi Development,4,05000
+07000,Divisi Operations,4,05000
