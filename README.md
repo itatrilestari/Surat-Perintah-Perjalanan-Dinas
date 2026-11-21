@@ -57,6 +57,12 @@ Terdapat data dummy pada `seed_data`. Untuk menjalankannya, jalankan:
 ./manage.py seed_data
 ```
 
+Dan
+
+```bash
+./manage.py seed_master_data
+```
+
 ### 5. Run Development Server
 
 Jalankan aplikasi menggunakan:
